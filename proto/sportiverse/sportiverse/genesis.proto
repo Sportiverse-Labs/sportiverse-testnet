@@ -1,0 +1,17 @@
+syntax = "proto3";
+package sportiverse.sportiverse;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "sportiverse/sportiverse/params.proto";
+
+option go_package = "sportiverse/x/sportiverse/types";
+
+// GenesisState defines the sportiverse module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

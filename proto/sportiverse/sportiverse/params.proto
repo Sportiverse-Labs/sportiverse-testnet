@@ -1,0 +1,15 @@
+syntax = "proto3";
+package sportiverse.sportiverse;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "sportiverse/x/sportiverse/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "sportiverse/x/sportiverse/Params";
+  option (gogoproto.equal) = true;
+
+  
+}
