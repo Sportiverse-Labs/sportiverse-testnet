@@ -1,0 +1,12 @@
+syntax = "proto3";
+package sportiverse.sportiverse;
+
+option go_package = "sportiverse/x/sportiverse/types";
+
+message Post {
+  uint64 id = 1;
+  string title = 2; 
+  string body = 3; 
+  string timestamp = 4; 
+  string creator = 5;
+}

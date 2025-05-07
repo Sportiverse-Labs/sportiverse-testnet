@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package sportiverse.sportiverse;
 
 import "amino/amino.proto";
@@ -6,25 +7,137 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "sportiverse/sportiverse/params.proto";
+import "sportiverse/sportiverse/post.proto";
+import "sportiverse/sportiverse/comment.proto";
+import "sportiverse/sportiverse/subscription.proto";
+import "sportiverse/sportiverse/like.proto";
 
 option go_package = "sportiverse/x/sportiverse/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/sportiverse/sportiverse/params";
+  
+  }
+  
+  // Queries a list of Post items.
+  rpc Post    (QueryGetPostRequest) returns (QueryGetPostResponse) {
+    option (google.api.http).get = "/sportiverse/sportiverse/post/{id}";
+  
+  }
+  rpc PostAll (QueryAllPostRequest) returns (QueryAllPostResponse) {
+    option (google.api.http).get = "/sportiverse/sportiverse/post";
+  
+  }
+  
+  // Queries a list of Comment items.
+  rpc Comment    (QueryGetCommentRequest) returns (QueryGetCommentResponse) {
+    option (google.api.http).get = "/sportiverse/sportiverse/comment/{id}";
+  
+  }
+  rpc CommentAll (QueryAllCommentRequest) returns (QueryAllCommentResponse) {
+    option (google.api.http).get = "/sportiverse/sportiverse/comment";
+  
+  }
+  
+  // Queries a list of Subscription items.
+  rpc Subscription    (QueryGetSubscriptionRequest) returns (QueryGetSubscriptionResponse) {
+    option (google.api.http).get = "/sportiverse/sportiverse/subscription/{id}";
+  
+  }
+  rpc SubscriptionAll (QueryAllSubscriptionRequest) returns (QueryAllSubscriptionResponse) {
+    option (google.api.http).get = "/sportiverse/sportiverse/subscription";
+  
+  }
+  
+  // Queries a list of Like items.
+  rpc Like    (QueryGetLikeRequest) returns (QueryGetLikeResponse) {
+    option (google.api.http).get = "/sportiverse/sportiverse/like/{id}";
+  
+  }
+  rpc LikeAll (QueryAllLikeRequest) returns (QueryAllLikeResponse) {
+    option (google.api.http).get = "/sportiverse/sportiverse/like";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
+  
   // params holds all the parameters of this module.
-  Params params = 1 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty) = true
-  ];
+  Params params = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
 }
+
+message QueryGetPostRequest {
+  uint64 id = 1;
+}
+
+message QueryGetPostResponse {
+  Post Post = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllPostRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPostResponse {
+  repeated Post                                   Post       = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetCommentRequest {
+  uint64 id = 1;
+}
+
+message QueryGetCommentResponse {
+  Comment Comment = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllCommentRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCommentResponse {
+  repeated Comment                                Comment    = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetSubscriptionRequest {
+  uint64 id = 1;
+}
+
+message QueryGetSubscriptionResponse {
+  Subscription Subscription = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllSubscriptionRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllSubscriptionResponse {
+  repeated Subscription                           Subscription = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination   = 2;
+}
+
+message QueryGetLikeRequest {
+  uint64 id = 1;
+}
+
+message QueryGetLikeResponse {
+  Like Like = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllLikeRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllLikeResponse {
+  repeated Like                                   Like       = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+

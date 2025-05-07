@@ -5,13 +5,12 @@ package types
 
 import (
 	fmt "fmt"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-
 	_ "github.com/cosmos/cosmos-sdk/types/tx/amino"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	proto "github.com/cosmos/gogoproto/proto"
+	io "io"
+	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -28,7 +27,15 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 // GenesisState defines the sportiverse module's genesis state.
 type GenesisState struct {
 	// params defines all the parameters of the module.
-	Params Params `protobuf:"bytes,1,opt,name=params,proto3" json:"params"`
+	Params            Params         `protobuf:"bytes,1,opt,name=params,proto3" json:"params"`
+	PostList          []Post         `protobuf:"bytes,2,rep,name=postList,proto3" json:"postList"`
+	PostCount         uint64         `protobuf:"varint,3,opt,name=postCount,proto3" json:"postCount,omitempty"`
+	CommentList       []Comment      `protobuf:"bytes,4,rep,name=commentList,proto3" json:"commentList"`
+	CommentCount      uint64         `protobuf:"varint,5,opt,name=commentCount,proto3" json:"commentCount,omitempty"`
+	SubscriptionList  []Subscription `protobuf:"bytes,6,rep,name=subscriptionList,proto3" json:"subscriptionList"`
+	SubscriptionCount uint64         `protobuf:"varint,7,opt,name=subscriptionCount,proto3" json:"subscriptionCount,omitempty"`
+	LikeList          []Like         `protobuf:"bytes,8,rep,name=likeList,proto3" json:"likeList"`
+	LikeCount         uint64         `protobuf:"varint,9,opt,name=likeCount,proto3" json:"likeCount,omitempty"`
 }
 
 func (m *GenesisState) Reset()         { *m = GenesisState{} }
@@ -71,6 +78,62 @@ func (m *GenesisState) GetParams() Params {
 	return Params{}
 }
 
+func (m *GenesisState) GetPostList() []Post {
+	if m != nil {
+		return m.PostList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetPostCount() uint64 {
+	if m != nil {
+		return m.PostCount
+	}
+	return 0
+}
+
+func (m *GenesisState) GetCommentList() []Comment {
+	if m != nil {
+		return m.CommentList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetCommentCount() uint64 {
+	if m != nil {
+		return m.CommentCount
+	}
+	return 0
+}
+
+func (m *GenesisState) GetSubscriptionList() []Subscription {
+	if m != nil {
+		return m.SubscriptionList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetSubscriptionCount() uint64 {
+	if m != nil {
+		return m.SubscriptionCount
+	}
+	return 0
+}
+
+func (m *GenesisState) GetLikeList() []Like {
+	if m != nil {
+		return m.LikeList
+	}
+	return nil
+}
+
+func (m *GenesisState) GetLikeCount() uint64 {
+	if m != nil {
+		return m.LikeCount
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*GenesisState)(nil), "sportiverse.sportiverse.GenesisState")
 }
@@ -80,19 +143,31 @@ func init() {
 }
 
 var fileDescriptor_18bb63232aac3f3b = []byte{
-	// 188 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x2d, 0x2e, 0xc8, 0x2f,
-	0x2a, 0xc9, 0x2c, 0x4b, 0x2d, 0x2a, 0x4e, 0xd5, 0x47, 0x66, 0xa7, 0xa7, 0xe6, 0xa5, 0x16, 0x67,
-	0x16, 0xeb, 0x15, 0x14, 0xe5, 0x97, 0xe4, 0x0b, 0x89, 0x23, 0x49, 0xe9, 0x21, 0xb1, 0xa5, 0x04,
-	0x13, 0x73, 0x33, 0xf3, 0xf2, 0xf5, 0xc1, 0x24, 0x44, 0xad, 0x94, 0x48, 0x7a, 0x7e, 0x7a, 0x3e,
-	0x98, 0xa9, 0x0f, 0x62, 0x41, 0x45, 0x55, 0x70, 0x59, 0x54, 0x90, 0x58, 0x94, 0x98, 0x0b, 0xb5,
-	0x47, 0x29, 0x88, 0x8b, 0xc7, 0x1d, 0x62, 0x71, 0x70, 0x49, 0x62, 0x49, 0xaa, 0x90, 0x13, 0x17,
-	0x1b, 0x44, 0x5e, 0x82, 0x51, 0x81, 0x51, 0x83, 0xdb, 0x48, 0x5e, 0x0f, 0x87, 0x43, 0xf4, 0x02,
-	0xc0, 0xca, 0x9c, 0x38, 0x4f, 0xdc, 0x93, 0x67, 0x58, 0xf1, 0x7c, 0x83, 0x16, 0x63, 0x10, 0x54,
-	0xa7, 0x93, 0xe5, 0x89, 0x47, 0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31, 0x3e, 0x78, 0x24, 0xc7, 0x38,
-	0xe1, 0xb1, 0x1c, 0xc3, 0x85, 0xc7, 0x72, 0x0c, 0x37, 0x1e, 0xcb, 0x31, 0x44, 0xc9, 0x23, 0xbb,
-	0xa3, 0x02, 0xc5, 0x55, 0x25, 0x95, 0x05, 0xa9, 0xc5, 0x49, 0x6c, 0x60, 0x57, 0x19, 0x03, 0x02,
-	0x00, 0x00, 0xff, 0xff, 0xcd, 0x8f, 0xa5, 0x41, 0x26, 0x01, 0x00, 0x00,
+	// 383 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x4f, 0x4b, 0x02, 0x41,
+	0x18, 0xc6, 0x77, 0x72, 0x33, 0x1d, 0x3d, 0xe4, 0x10, 0x24, 0x52, 0xeb, 0x22, 0x09, 0x22, 0xb1,
+	0x82, 0x9d, 0x3a, 0x05, 0xeb, 0xa1, 0x0e, 0x1e, 0x42, 0x0f, 0x41, 0xb7, 0x55, 0x06, 0x19, 0x6c,
+	0x77, 0x96, 0x9d, 0x31, 0xea, 0x03, 0x74, 0xef, 0x63, 0x74, 0xec, 0x63, 0x78, 0xf4, 0xd8, 0x29,
+	0x42, 0x0f, 0x7d, 0x8d, 0x98, 0x3f, 0xda, 0x88, 0x0c, 0x5e, 0x96, 0x67, 0xdf, 0x79, 0xde, 0xf9,
+	0xbd, 0xfb, 0xec, 0x0b, 0x9b, 0x2c, 0xa5, 0x19, 0x27, 0xcf, 0x38, 0x63, 0xb8, 0x63, 0xea, 0x09,
+	0x4e, 0x30, 0x23, 0x2c, 0x48, 0x33, 0xca, 0x29, 0x3a, 0x35, 0x8e, 0x02, 0x43, 0xd7, 0x2a, 0x51,
+	0x4c, 0x12, 0xda, 0x91, 0x4f, 0xe5, 0xad, 0x9d, 0x4c, 0xe8, 0x84, 0x4a, 0xd9, 0x11, 0x4a, 0x57,
+	0x2f, 0x6c, 0xa0, 0x34, 0xca, 0xa2, 0x58, 0x73, 0x6a, 0x0d, 0xab, 0x8b, 0x32, 0xae, 0x3d, 0xd6,
+	0x91, 0xc7, 0x34, 0x8e, 0x71, 0xb2, 0xb6, 0xb5, 0x6d, 0x36, 0x36, 0x1b, 0xb1, 0x71, 0x46, 0x52,
+	0x4e, 0x68, 0xb2, 0x0f, 0xfb, 0x44, 0xa6, 0x58, 0x79, 0x1a, 0x6f, 0x2e, 0x2c, 0xdf, 0xaa, 0x50,
+	0x86, 0x3c, 0xe2, 0x18, 0x85, 0x30, 0xaf, 0x66, 0xaf, 0x02, 0x1f, 0xb4, 0x4a, 0xdd, 0x7a, 0x60,
+	0x09, 0x29, 0xb8, 0x97, 0xb6, 0xb0, 0x38, 0xff, 0xae, 0x3b, 0x1f, 0xbf, 0x9f, 0x6d, 0x30, 0xd0,
+	0x9d, 0xe8, 0x06, 0x16, 0xc4, 0x97, 0xf5, 0x09, 0xe3, 0xd5, 0x03, 0x3f, 0xd7, 0x2a, 0x75, 0xcf,
+	0xed, 0xb7, 0x50, 0xc6, 0x43, 0x57, 0xdc, 0x31, 0xd8, 0x34, 0xa1, 0x33, 0x58, 0x14, 0xba, 0x47,
+	0x67, 0x09, 0xaf, 0xe6, 0x7c, 0xd0, 0x72, 0x07, 0xff, 0x05, 0x74, 0x07, 0x4b, 0x3a, 0x14, 0x49,
+	0x70, 0x25, 0xc1, 0xb7, 0x12, 0x7a, 0xca, 0xab, 0x21, 0x66, 0x2b, 0x6a, 0xc0, 0xb2, 0x7e, 0x55,
+	0xa8, 0x43, 0x89, 0xda, 0xaa, 0xa1, 0x07, 0x78, 0x6c, 0x66, 0x2b, 0x91, 0x79, 0x89, 0x6c, 0x5a,
+	0x91, 0x43, 0xa3, 0x41, 0x73, 0x77, 0x2e, 0x41, 0x97, 0xb0, 0x62, 0xd6, 0xd4, 0x04, 0x47, 0x72,
+	0x82, 0xdd, 0x03, 0x91, 0xa9, 0xf8, 0x6d, 0x12, 0x5f, 0xd8, 0x93, 0x69, 0x9f, 0x4c, 0xf1, 0x3a,
+	0xd3, 0x75, 0x93, 0xc8, 0x54, 0x68, 0x85, 0x29, 0xaa, 0x4c, 0x37, 0x85, 0xf0, 0x7a, 0xbe, 0xf4,
+	0xc0, 0x62, 0xe9, 0x81, 0x9f, 0xa5, 0x07, 0xde, 0x57, 0x9e, 0xb3, 0x58, 0x79, 0xce, 0xd7, 0xca,
+	0x73, 0x1e, 0xeb, 0xe6, 0xe6, 0xbc, 0x6c, 0xed, 0x11, 0x7f, 0x4d, 0x31, 0x1b, 0xe5, 0xe5, 0x26,
+	0x5d, 0xfd, 0x05, 0x00, 0x00, 0xff, 0xff, 0xbf, 0xbe, 0x2f, 0xc8, 0x75, 0x03, 0x00, 0x00,
 }
 
 func (m *GenesisState) Marshal() (dAtA []byte, err error) {
@@ -115,6 +190,82 @@ func (m *GenesisState) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	if m.LikeCount != 0 {
+		i = encodeVarintGenesis(dAtA, i, uint64(m.LikeCount))
+		i--
+		dAtA[i] = 0x48
+	}
+	if len(m.LikeList) > 0 {
+		for iNdEx := len(m.LikeList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.LikeList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x42
+		}
+	}
+	if m.SubscriptionCount != 0 {
+		i = encodeVarintGenesis(dAtA, i, uint64(m.SubscriptionCount))
+		i--
+		dAtA[i] = 0x38
+	}
+	if len(m.SubscriptionList) > 0 {
+		for iNdEx := len(m.SubscriptionList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.SubscriptionList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x32
+		}
+	}
+	if m.CommentCount != 0 {
+		i = encodeVarintGenesis(dAtA, i, uint64(m.CommentCount))
+		i--
+		dAtA[i] = 0x28
+	}
+	if len(m.CommentList) > 0 {
+		for iNdEx := len(m.CommentList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.CommentList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x22
+		}
+	}
+	if m.PostCount != 0 {
+		i = encodeVarintGenesis(dAtA, i, uint64(m.PostCount))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.PostList) > 0 {
+		for iNdEx := len(m.PostList) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.PostList[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintGenesis(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
+	}
 	{
 		size, err := m.Params.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
@@ -147,6 +298,42 @@ func (m *GenesisState) Size() (n int) {
 	_ = l
 	l = m.Params.Size()
 	n += 1 + l + sovGenesis(uint64(l))
+	if len(m.PostList) > 0 {
+		for _, e := range m.PostList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if m.PostCount != 0 {
+		n += 1 + sovGenesis(uint64(m.PostCount))
+	}
+	if len(m.CommentList) > 0 {
+		for _, e := range m.CommentList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if m.CommentCount != 0 {
+		n += 1 + sovGenesis(uint64(m.CommentCount))
+	}
+	if len(m.SubscriptionList) > 0 {
+		for _, e := range m.SubscriptionList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if m.SubscriptionCount != 0 {
+		n += 1 + sovGenesis(uint64(m.SubscriptionCount))
+	}
+	if len(m.LikeList) > 0 {
+		for _, e := range m.LikeList {
+			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if m.LikeCount != 0 {
+		n += 1 + sovGenesis(uint64(m.LikeCount))
+	}
 	return n
 }
 
@@ -218,6 +405,218 @@ func (m *GenesisState) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PostList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PostList = append(m.PostList, Post{})
+			if err := m.PostList[len(m.PostList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PostCount", wireType)
+			}
+			m.PostCount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.PostCount |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CommentList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CommentList = append(m.CommentList, Comment{})
+			if err := m.CommentList[len(m.CommentList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CommentCount", wireType)
+			}
+			m.CommentCount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CommentCount |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SubscriptionList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.SubscriptionList = append(m.SubscriptionList, Subscription{})
+			if err := m.SubscriptionList[len(m.SubscriptionList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SubscriptionCount", wireType)
+			}
+			m.SubscriptionCount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.SubscriptionCount |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 8:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LikeList", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthGenesis
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.LikeList = append(m.LikeList, Like{})
+			if err := m.LikeList[len(m.LikeList)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LikeCount", wireType)
+			}
+			m.LikeCount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenesis
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LikeCount |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
 		default:
 			iNdEx = preIndex
 			skippy, err := skipGenesis(dAtA[iNdEx:])

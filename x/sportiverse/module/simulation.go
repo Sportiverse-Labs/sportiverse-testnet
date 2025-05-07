@@ -23,7 +23,47 @@ var (
 )
 
 const (
-// this line is used by starport scaffolding # simapp/module/const
+	opWeightMsgCreatePost = "op_weight_msg_post"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreatePost int = 100
+
+	opWeightMsgUpdatePost = "op_weight_msg_post"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgUpdatePost int = 100
+
+	opWeightMsgDeletePost = "op_weight_msg_post"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeletePost int = 100
+
+	opWeightMsgCreateComment = "op_weight_msg_comment"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreateComment int = 100
+
+	opWeightMsgUpdateComment = "op_weight_msg_comment"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgUpdateComment int = 100
+
+	opWeightMsgDeleteComment = "op_weight_msg_comment"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteComment int = 100
+
+	opWeightMsgCreateSubscription = "op_weight_msg_subscription"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreateSubscription int = 100
+
+	opWeightMsgDeleteSubscription = "op_weight_msg_subscription"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteSubscription int = 100
+
+	opWeightMsgCreateLike = "op_weight_msg_like"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreateLike int = 100
+
+	opWeightMsgDeleteLike = "op_weight_msg_like"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteLike int = 100
+
+	// this line is used by starport scaffolding # simapp/module/const
 )
 
 // GenerateGenesisState creates a randomized GenState of the module.
@@ -34,6 +74,50 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 	}
 	sportiverseGenesis := types.GenesisState{
 		Params: types.DefaultParams(),
+		PostList: []types.Post{
+			{
+				Id:      0,
+				Creator: sample.AccAddress(),
+			},
+			{
+				Id:      1,
+				Creator: sample.AccAddress(),
+			},
+		},
+		PostCount: 2,
+		CommentList: []types.Comment{
+			{
+				Id:      0,
+				Creator: sample.AccAddress(),
+			},
+			{
+				Id:      1,
+				Creator: sample.AccAddress(),
+			},
+		},
+		CommentCount: 2,
+		SubscriptionList: []types.Subscription{
+			{
+				Id:      0,
+				Creator: sample.AccAddress(),
+			},
+			{
+				Id:      1,
+				Creator: sample.AccAddress(),
+			},
+		},
+		SubscriptionCount: 2,
+		LikeList: []types.Like{
+			{
+				Id:      0,
+				Creator: sample.AccAddress(),
+			},
+			{
+				Id:      1,
+				Creator: sample.AccAddress(),
+			},
+		},
+		LikeCount: 2,
 		// this line is used by starport scaffolding # simapp/module/genesisState
 	}
 	simState.GenState[types.ModuleName] = simState.Cdc.MustMarshalJSON(&sportiverseGenesis)
@@ -46,6 +130,116 @@ func (am AppModule) RegisterStoreDecoder(_ simtypes.StoreDecoderRegistry) {}
 func (am AppModule) WeightedOperations(simState module.SimulationState) []simtypes.WeightedOperation {
 	operations := make([]simtypes.WeightedOperation, 0)
 
+	var weightMsgCreatePost int
+	simState.AppParams.GetOrGenerate(opWeightMsgCreatePost, &weightMsgCreatePost, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreatePost = defaultWeightMsgCreatePost
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreatePost,
+		sportiversesimulation.SimulateMsgCreatePost(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgUpdatePost int
+	simState.AppParams.GetOrGenerate(opWeightMsgUpdatePost, &weightMsgUpdatePost, nil,
+		func(_ *rand.Rand) {
+			weightMsgUpdatePost = defaultWeightMsgUpdatePost
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgUpdatePost,
+		sportiversesimulation.SimulateMsgUpdatePost(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeletePost int
+	simState.AppParams.GetOrGenerate(opWeightMsgDeletePost, &weightMsgDeletePost, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeletePost = defaultWeightMsgDeletePost
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeletePost,
+		sportiversesimulation.SimulateMsgDeletePost(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgCreateComment int
+	simState.AppParams.GetOrGenerate(opWeightMsgCreateComment, &weightMsgCreateComment, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreateComment = defaultWeightMsgCreateComment
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreateComment,
+		sportiversesimulation.SimulateMsgCreateComment(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgUpdateComment int
+	simState.AppParams.GetOrGenerate(opWeightMsgUpdateComment, &weightMsgUpdateComment, nil,
+		func(_ *rand.Rand) {
+			weightMsgUpdateComment = defaultWeightMsgUpdateComment
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgUpdateComment,
+		sportiversesimulation.SimulateMsgUpdateComment(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeleteComment int
+	simState.AppParams.GetOrGenerate(opWeightMsgDeleteComment, &weightMsgDeleteComment, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteComment = defaultWeightMsgDeleteComment
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteComment,
+		sportiversesimulation.SimulateMsgDeleteComment(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgCreateSubscription int
+	simState.AppParams.GetOrGenerate(opWeightMsgCreateSubscription, &weightMsgCreateSubscription, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreateSubscription = defaultWeightMsgCreateSubscription
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreateSubscription,
+		sportiversesimulation.SimulateMsgCreateSubscription(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeleteSubscription int
+	simState.AppParams.GetOrGenerate(opWeightMsgDeleteSubscription, &weightMsgDeleteSubscription, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteSubscription = defaultWeightMsgDeleteSubscription
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteSubscription,
+		sportiversesimulation.SimulateMsgDeleteSubscription(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgCreateLike int
+	simState.AppParams.GetOrGenerate(opWeightMsgCreateLike, &weightMsgCreateLike, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreateLike = defaultWeightMsgCreateLike
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreateLike,
+		sportiversesimulation.SimulateMsgCreateLike(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeleteLike int
+	simState.AppParams.GetOrGenerate(opWeightMsgDeleteLike, &weightMsgDeleteLike, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteLike = defaultWeightMsgDeleteLike
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteLike,
+		sportiversesimulation.SimulateMsgDeleteLike(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -54,6 +248,86 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 // ProposalMsgs returns msgs used for governance proposals for simulations.
 func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.WeightedProposalMsg {
 	return []simtypes.WeightedProposalMsg{
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgCreatePost,
+			defaultWeightMsgCreatePost,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgCreatePost(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgUpdatePost,
+			defaultWeightMsgUpdatePost,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgUpdatePost(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgDeletePost,
+			defaultWeightMsgDeletePost,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgDeletePost(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgCreateComment,
+			defaultWeightMsgCreateComment,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgCreateComment(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgUpdateComment,
+			defaultWeightMsgUpdateComment,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgUpdateComment(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgDeleteComment,
+			defaultWeightMsgDeleteComment,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgDeleteComment(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgCreateSubscription,
+			defaultWeightMsgCreateSubscription,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgCreateSubscription(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgDeleteSubscription,
+			defaultWeightMsgDeleteSubscription,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgDeleteSubscription(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgCreateLike,
+			defaultWeightMsgCreateLike,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgCreateLike(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgDeleteLike,
+			defaultWeightMsgDeleteLike,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgDeleteLike(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
 		// this line is used by starport scaffolding # simapp/module/OpMsg
 	}
 }

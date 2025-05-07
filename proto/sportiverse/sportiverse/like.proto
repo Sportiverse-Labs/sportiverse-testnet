@@ -1,0 +1,10 @@
+syntax = "proto3";
+package sportiverse.sportiverse;
+
+option go_package = "sportiverse/x/sportiverse/types";
+
+message Like {
+  uint64 id = 1;
+  string postId = 2; 
+  string creator = 3;
+}

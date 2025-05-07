@@ -2,28 +2,247 @@
 package sportiverse
 
 import (
-	fmt "fmt"
-	io "io"
-	reflect "reflect"
-	sync "sync"
-
 	_ "cosmossdk.io/api/amino"
+	fmt "fmt"
 	runtime "github.com/cosmos/cosmos-proto/runtime"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoiface "google.golang.org/protobuf/runtime/protoiface"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	io "io"
+	reflect "reflect"
+	sync "sync"
 )
 
+var _ protoreflect.List = (*_GenesisState_2_list)(nil)
+
+type _GenesisState_2_list struct {
+	list *[]*Post
+}
+
+func (x *_GenesisState_2_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_GenesisState_2_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_GenesisState_2_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Post)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_GenesisState_2_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Post)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_GenesisState_2_list) AppendMutable() protoreflect.Value {
+	v := new(Post)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_2_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_GenesisState_2_list) NewElement() protoreflect.Value {
+	v := new(Post)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_2_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_GenesisState_4_list)(nil)
+
+type _GenesisState_4_list struct {
+	list *[]*Comment
+}
+
+func (x *_GenesisState_4_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_GenesisState_4_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_GenesisState_4_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Comment)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_GenesisState_4_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Comment)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_GenesisState_4_list) AppendMutable() protoreflect.Value {
+	v := new(Comment)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_4_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_GenesisState_4_list) NewElement() protoreflect.Value {
+	v := new(Comment)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_4_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_GenesisState_6_list)(nil)
+
+type _GenesisState_6_list struct {
+	list *[]*Subscription
+}
+
+func (x *_GenesisState_6_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_GenesisState_6_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_GenesisState_6_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Subscription)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_GenesisState_6_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Subscription)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_GenesisState_6_list) AppendMutable() protoreflect.Value {
+	v := new(Subscription)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_6_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_GenesisState_6_list) NewElement() protoreflect.Value {
+	v := new(Subscription)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_6_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_GenesisState_8_list)(nil)
+
+type _GenesisState_8_list struct {
+	list *[]*Like
+}
+
+func (x *_GenesisState_8_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_GenesisState_8_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_GenesisState_8_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Like)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_GenesisState_8_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Like)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_GenesisState_8_list) AppendMutable() protoreflect.Value {
+	v := new(Like)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_8_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_GenesisState_8_list) NewElement() protoreflect.Value {
+	v := new(Like)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_8_list) IsValid() bool {
+	return x.list != nil
+}
+
 var (
-	md_GenesisState        protoreflect.MessageDescriptor
-	fd_GenesisState_params protoreflect.FieldDescriptor
+	md_GenesisState                   protoreflect.MessageDescriptor
+	fd_GenesisState_params            protoreflect.FieldDescriptor
+	fd_GenesisState_postList          protoreflect.FieldDescriptor
+	fd_GenesisState_postCount         protoreflect.FieldDescriptor
+	fd_GenesisState_commentList       protoreflect.FieldDescriptor
+	fd_GenesisState_commentCount      protoreflect.FieldDescriptor
+	fd_GenesisState_subscriptionList  protoreflect.FieldDescriptor
+	fd_GenesisState_subscriptionCount protoreflect.FieldDescriptor
+	fd_GenesisState_likeList          protoreflect.FieldDescriptor
+	fd_GenesisState_likeCount         protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_sportiverse_sportiverse_genesis_proto_init()
 	md_GenesisState = File_sportiverse_sportiverse_genesis_proto.Messages().ByName("GenesisState")
 	fd_GenesisState_params = md_GenesisState.Fields().ByName("params")
+	fd_GenesisState_postList = md_GenesisState.Fields().ByName("postList")
+	fd_GenesisState_postCount = md_GenesisState.Fields().ByName("postCount")
+	fd_GenesisState_commentList = md_GenesisState.Fields().ByName("commentList")
+	fd_GenesisState_commentCount = md_GenesisState.Fields().ByName("commentCount")
+	fd_GenesisState_subscriptionList = md_GenesisState.Fields().ByName("subscriptionList")
+	fd_GenesisState_subscriptionCount = md_GenesisState.Fields().ByName("subscriptionCount")
+	fd_GenesisState_likeList = md_GenesisState.Fields().ByName("likeList")
+	fd_GenesisState_likeCount = md_GenesisState.Fields().ByName("likeCount")
 }
 
 var _ protoreflect.Message = (*fastReflection_GenesisState)(nil)
@@ -97,6 +316,54 @@ func (x *fastReflection_GenesisState) Range(f func(protoreflect.FieldDescriptor,
 			return
 		}
 	}
+	if len(x.PostList) != 0 {
+		value := protoreflect.ValueOfList(&_GenesisState_2_list{list: &x.PostList})
+		if !f(fd_GenesisState_postList, value) {
+			return
+		}
+	}
+	if x.PostCount != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.PostCount)
+		if !f(fd_GenesisState_postCount, value) {
+			return
+		}
+	}
+	if len(x.CommentList) != 0 {
+		value := protoreflect.ValueOfList(&_GenesisState_4_list{list: &x.CommentList})
+		if !f(fd_GenesisState_commentList, value) {
+			return
+		}
+	}
+	if x.CommentCount != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.CommentCount)
+		if !f(fd_GenesisState_commentCount, value) {
+			return
+		}
+	}
+	if len(x.SubscriptionList) != 0 {
+		value := protoreflect.ValueOfList(&_GenesisState_6_list{list: &x.SubscriptionList})
+		if !f(fd_GenesisState_subscriptionList, value) {
+			return
+		}
+	}
+	if x.SubscriptionCount != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.SubscriptionCount)
+		if !f(fd_GenesisState_subscriptionCount, value) {
+			return
+		}
+	}
+	if len(x.LikeList) != 0 {
+		value := protoreflect.ValueOfList(&_GenesisState_8_list{list: &x.LikeList})
+		if !f(fd_GenesisState_likeList, value) {
+			return
+		}
+	}
+	if x.LikeCount != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.LikeCount)
+		if !f(fd_GenesisState_likeCount, value) {
+			return
+		}
+	}
 }
 
 // Has reports whether a field is populated.
@@ -114,6 +381,22 @@ func (x *fastReflection_GenesisState) Has(fd protoreflect.FieldDescriptor) bool 
 	switch fd.FullName() {
 	case "sportiverse.sportiverse.GenesisState.params":
 		return x.Params != nil
+	case "sportiverse.sportiverse.GenesisState.postList":
+		return len(x.PostList) != 0
+	case "sportiverse.sportiverse.GenesisState.postCount":
+		return x.PostCount != uint64(0)
+	case "sportiverse.sportiverse.GenesisState.commentList":
+		return len(x.CommentList) != 0
+	case "sportiverse.sportiverse.GenesisState.commentCount":
+		return x.CommentCount != uint64(0)
+	case "sportiverse.sportiverse.GenesisState.subscriptionList":
+		return len(x.SubscriptionList) != 0
+	case "sportiverse.sportiverse.GenesisState.subscriptionCount":
+		return x.SubscriptionCount != uint64(0)
+	case "sportiverse.sportiverse.GenesisState.likeList":
+		return len(x.LikeList) != 0
+	case "sportiverse.sportiverse.GenesisState.likeCount":
+		return x.LikeCount != uint64(0)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: sportiverse.sportiverse.GenesisState"))
@@ -132,6 +415,22 @@ func (x *fastReflection_GenesisState) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
 	case "sportiverse.sportiverse.GenesisState.params":
 		x.Params = nil
+	case "sportiverse.sportiverse.GenesisState.postList":
+		x.PostList = nil
+	case "sportiverse.sportiverse.GenesisState.postCount":
+		x.PostCount = uint64(0)
+	case "sportiverse.sportiverse.GenesisState.commentList":
+		x.CommentList = nil
+	case "sportiverse.sportiverse.GenesisState.commentCount":
+		x.CommentCount = uint64(0)
+	case "sportiverse.sportiverse.GenesisState.subscriptionList":
+		x.SubscriptionList = nil
+	case "sportiverse.sportiverse.GenesisState.subscriptionCount":
+		x.SubscriptionCount = uint64(0)
+	case "sportiverse.sportiverse.GenesisState.likeList":
+		x.LikeList = nil
+	case "sportiverse.sportiverse.GenesisState.likeCount":
+		x.LikeCount = uint64(0)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: sportiverse.sportiverse.GenesisState"))
@@ -151,6 +450,42 @@ func (x *fastReflection_GenesisState) Get(descriptor protoreflect.FieldDescripto
 	case "sportiverse.sportiverse.GenesisState.params":
 		value := x.Params
 		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	case "sportiverse.sportiverse.GenesisState.postList":
+		if len(x.PostList) == 0 {
+			return protoreflect.ValueOfList(&_GenesisState_2_list{})
+		}
+		listValue := &_GenesisState_2_list{list: &x.PostList}
+		return protoreflect.ValueOfList(listValue)
+	case "sportiverse.sportiverse.GenesisState.postCount":
+		value := x.PostCount
+		return protoreflect.ValueOfUint64(value)
+	case "sportiverse.sportiverse.GenesisState.commentList":
+		if len(x.CommentList) == 0 {
+			return protoreflect.ValueOfList(&_GenesisState_4_list{})
+		}
+		listValue := &_GenesisState_4_list{list: &x.CommentList}
+		return protoreflect.ValueOfList(listValue)
+	case "sportiverse.sportiverse.GenesisState.commentCount":
+		value := x.CommentCount
+		return protoreflect.ValueOfUint64(value)
+	case "sportiverse.sportiverse.GenesisState.subscriptionList":
+		if len(x.SubscriptionList) == 0 {
+			return protoreflect.ValueOfList(&_GenesisState_6_list{})
+		}
+		listValue := &_GenesisState_6_list{list: &x.SubscriptionList}
+		return protoreflect.ValueOfList(listValue)
+	case "sportiverse.sportiverse.GenesisState.subscriptionCount":
+		value := x.SubscriptionCount
+		return protoreflect.ValueOfUint64(value)
+	case "sportiverse.sportiverse.GenesisState.likeList":
+		if len(x.LikeList) == 0 {
+			return protoreflect.ValueOfList(&_GenesisState_8_list{})
+		}
+		listValue := &_GenesisState_8_list{list: &x.LikeList}
+		return protoreflect.ValueOfList(listValue)
+	case "sportiverse.sportiverse.GenesisState.likeCount":
+		value := x.LikeCount
+		return protoreflect.ValueOfUint64(value)
 	default:
 		if descriptor.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: sportiverse.sportiverse.GenesisState"))
@@ -173,6 +508,30 @@ func (x *fastReflection_GenesisState) Set(fd protoreflect.FieldDescriptor, value
 	switch fd.FullName() {
 	case "sportiverse.sportiverse.GenesisState.params":
 		x.Params = value.Message().Interface().(*Params)
+	case "sportiverse.sportiverse.GenesisState.postList":
+		lv := value.List()
+		clv := lv.(*_GenesisState_2_list)
+		x.PostList = *clv.list
+	case "sportiverse.sportiverse.GenesisState.postCount":
+		x.PostCount = value.Uint()
+	case "sportiverse.sportiverse.GenesisState.commentList":
+		lv := value.List()
+		clv := lv.(*_GenesisState_4_list)
+		x.CommentList = *clv.list
+	case "sportiverse.sportiverse.GenesisState.commentCount":
+		x.CommentCount = value.Uint()
+	case "sportiverse.sportiverse.GenesisState.subscriptionList":
+		lv := value.List()
+		clv := lv.(*_GenesisState_6_list)
+		x.SubscriptionList = *clv.list
+	case "sportiverse.sportiverse.GenesisState.subscriptionCount":
+		x.SubscriptionCount = value.Uint()
+	case "sportiverse.sportiverse.GenesisState.likeList":
+		lv := value.List()
+		clv := lv.(*_GenesisState_8_list)
+		x.LikeList = *clv.list
+	case "sportiverse.sportiverse.GenesisState.likeCount":
+		x.LikeCount = value.Uint()
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: sportiverse.sportiverse.GenesisState"))
@@ -198,6 +557,38 @@ func (x *fastReflection_GenesisState) Mutable(fd protoreflect.FieldDescriptor) p
 			x.Params = new(Params)
 		}
 		return protoreflect.ValueOfMessage(x.Params.ProtoReflect())
+	case "sportiverse.sportiverse.GenesisState.postList":
+		if x.PostList == nil {
+			x.PostList = []*Post{}
+		}
+		value := &_GenesisState_2_list{list: &x.PostList}
+		return protoreflect.ValueOfList(value)
+	case "sportiverse.sportiverse.GenesisState.commentList":
+		if x.CommentList == nil {
+			x.CommentList = []*Comment{}
+		}
+		value := &_GenesisState_4_list{list: &x.CommentList}
+		return protoreflect.ValueOfList(value)
+	case "sportiverse.sportiverse.GenesisState.subscriptionList":
+		if x.SubscriptionList == nil {
+			x.SubscriptionList = []*Subscription{}
+		}
+		value := &_GenesisState_6_list{list: &x.SubscriptionList}
+		return protoreflect.ValueOfList(value)
+	case "sportiverse.sportiverse.GenesisState.likeList":
+		if x.LikeList == nil {
+			x.LikeList = []*Like{}
+		}
+		value := &_GenesisState_8_list{list: &x.LikeList}
+		return protoreflect.ValueOfList(value)
+	case "sportiverse.sportiverse.GenesisState.postCount":
+		panic(fmt.Errorf("field postCount of message sportiverse.sportiverse.GenesisState is not mutable"))
+	case "sportiverse.sportiverse.GenesisState.commentCount":
+		panic(fmt.Errorf("field commentCount of message sportiverse.sportiverse.GenesisState is not mutable"))
+	case "sportiverse.sportiverse.GenesisState.subscriptionCount":
+		panic(fmt.Errorf("field subscriptionCount of message sportiverse.sportiverse.GenesisState is not mutable"))
+	case "sportiverse.sportiverse.GenesisState.likeCount":
+		panic(fmt.Errorf("field likeCount of message sportiverse.sportiverse.GenesisState is not mutable"))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: sportiverse.sportiverse.GenesisState"))
@@ -214,6 +605,26 @@ func (x *fastReflection_GenesisState) NewField(fd protoreflect.FieldDescriptor) 
 	case "sportiverse.sportiverse.GenesisState.params":
 		m := new(Params)
 		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	case "sportiverse.sportiverse.GenesisState.postList":
+		list := []*Post{}
+		return protoreflect.ValueOfList(&_GenesisState_2_list{list: &list})
+	case "sportiverse.sportiverse.GenesisState.postCount":
+		return protoreflect.ValueOfUint64(uint64(0))
+	case "sportiverse.sportiverse.GenesisState.commentList":
+		list := []*Comment{}
+		return protoreflect.ValueOfList(&_GenesisState_4_list{list: &list})
+	case "sportiverse.sportiverse.GenesisState.commentCount":
+		return protoreflect.ValueOfUint64(uint64(0))
+	case "sportiverse.sportiverse.GenesisState.subscriptionList":
+		list := []*Subscription{}
+		return protoreflect.ValueOfList(&_GenesisState_6_list{list: &list})
+	case "sportiverse.sportiverse.GenesisState.subscriptionCount":
+		return protoreflect.ValueOfUint64(uint64(0))
+	case "sportiverse.sportiverse.GenesisState.likeList":
+		list := []*Like{}
+		return protoreflect.ValueOfList(&_GenesisState_8_list{list: &list})
+	case "sportiverse.sportiverse.GenesisState.likeCount":
+		return protoreflect.ValueOfUint64(uint64(0))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: sportiverse.sportiverse.GenesisState"))
@@ -287,6 +698,42 @@ func (x *fastReflection_GenesisState) ProtoMethods() *protoiface.Methods {
 			l = options.Size(x.Params)
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
+		if len(x.PostList) > 0 {
+			for _, e := range x.PostList {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if x.PostCount != 0 {
+			n += 1 + runtime.Sov(uint64(x.PostCount))
+		}
+		if len(x.CommentList) > 0 {
+			for _, e := range x.CommentList {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if x.CommentCount != 0 {
+			n += 1 + runtime.Sov(uint64(x.CommentCount))
+		}
+		if len(x.SubscriptionList) > 0 {
+			for _, e := range x.SubscriptionList {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if x.SubscriptionCount != 0 {
+			n += 1 + runtime.Sov(uint64(x.SubscriptionCount))
+		}
+		if len(x.LikeList) > 0 {
+			for _, e := range x.LikeList {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if x.LikeCount != 0 {
+			n += 1 + runtime.Sov(uint64(x.LikeCount))
+		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
 		}
@@ -315,6 +762,90 @@ func (x *fastReflection_GenesisState) ProtoMethods() *protoiface.Methods {
 		if x.unknownFields != nil {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.LikeCount != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.LikeCount))
+			i--
+			dAtA[i] = 0x48
+		}
+		if len(x.LikeList) > 0 {
+			for iNdEx := len(x.LikeList) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.LikeList[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x42
+			}
+		}
+		if x.SubscriptionCount != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.SubscriptionCount))
+			i--
+			dAtA[i] = 0x38
+		}
+		if len(x.SubscriptionList) > 0 {
+			for iNdEx := len(x.SubscriptionList) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.SubscriptionList[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x32
+			}
+		}
+		if x.CommentCount != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.CommentCount))
+			i--
+			dAtA[i] = 0x28
+		}
+		if len(x.CommentList) > 0 {
+			for iNdEx := len(x.CommentList) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.CommentList[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x22
+			}
+		}
+		if x.PostCount != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.PostCount))
+			i--
+			dAtA[i] = 0x18
+		}
+		if len(x.PostList) > 0 {
+			for iNdEx := len(x.PostList) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.PostList[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x12
+			}
 		}
 		if x.Params != nil {
 			encoded, err := options.Marshal(x.Params)
@@ -415,6 +946,218 @@ func (x *fastReflection_GenesisState) ProtoMethods() *protoiface.Methods {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
 				}
 				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field PostList", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.PostList = append(x.PostList, &Post{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.PostList[len(x.PostList)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 3:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field PostCount", wireType)
+				}
+				x.PostCount = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.PostCount |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			case 4:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field CommentList", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.CommentList = append(x.CommentList, &Comment{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.CommentList[len(x.CommentList)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 5:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field CommentCount", wireType)
+				}
+				x.CommentCount = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.CommentCount |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			case 6:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field SubscriptionList", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.SubscriptionList = append(x.SubscriptionList, &Subscription{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.SubscriptionList[len(x.SubscriptionList)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 7:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field SubscriptionCount", wireType)
+				}
+				x.SubscriptionCount = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.SubscriptionCount |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			case 8:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field LikeList", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.LikeList = append(x.LikeList, &Like{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.LikeList[len(x.LikeList)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 9:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field LikeCount", wireType)
+				}
+				x.LikeCount = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.LikeCount |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -470,7 +1213,15 @@ type GenesisState struct {
 	unknownFields protoimpl.UnknownFields
 
 	// params defines all the parameters of the module.
-	Params *Params `protobuf:"bytes,1,opt,name=params,proto3" json:"params,omitempty"`
+	Params            *Params         `protobuf:"bytes,1,opt,name=params,proto3" json:"params,omitempty"`
+	PostList          []*Post         `protobuf:"bytes,2,rep,name=postList,proto3" json:"postList,omitempty"`
+	PostCount         uint64          `protobuf:"varint,3,opt,name=postCount,proto3" json:"postCount,omitempty"`
+	CommentList       []*Comment      `protobuf:"bytes,4,rep,name=commentList,proto3" json:"commentList,omitempty"`
+	CommentCount      uint64          `protobuf:"varint,5,opt,name=commentCount,proto3" json:"commentCount,omitempty"`
+	SubscriptionList  []*Subscription `protobuf:"bytes,6,rep,name=subscriptionList,proto3" json:"subscriptionList,omitempty"`
+	SubscriptionCount uint64          `protobuf:"varint,7,opt,name=subscriptionCount,proto3" json:"subscriptionCount,omitempty"`
+	LikeList          []*Like         `protobuf:"bytes,8,rep,name=likeList,proto3" json:"likeList,omitempty"`
+	LikeCount         uint64          `protobuf:"varint,9,opt,name=likeCount,proto3" json:"likeCount,omitempty"`
 }
 
 func (x *GenesisState) Reset() {
@@ -500,6 +1251,62 @@ func (x *GenesisState) GetParams() *Params {
 	return nil
 }
 
+func (x *GenesisState) GetPostList() []*Post {
+	if x != nil {
+		return x.PostList
+	}
+	return nil
+}
+
+func (x *GenesisState) GetPostCount() uint64 {
+	if x != nil {
+		return x.PostCount
+	}
+	return 0
+}
+
+func (x *GenesisState) GetCommentList() []*Comment {
+	if x != nil {
+		return x.CommentList
+	}
+	return nil
+}
+
+func (x *GenesisState) GetCommentCount() uint64 {
+	if x != nil {
+		return x.CommentCount
+	}
+	return 0
+}
+
+func (x *GenesisState) GetSubscriptionList() []*Subscription {
+	if x != nil {
+		return x.SubscriptionList
+	}
+	return nil
+}
+
+func (x *GenesisState) GetSubscriptionCount() uint64 {
+	if x != nil {
+		return x.SubscriptionCount
+	}
+	return 0
+}
+
+func (x *GenesisState) GetLikeList() []*Like {
+	if x != nil {
+		return x.LikeList
+	}
+	return nil
+}
+
+func (x *GenesisState) GetLikeCount() uint64 {
+	if x != nil {
+		return x.LikeCount
+	}
+	return 0
+}
+
 var File_sportiverse_sportiverse_genesis_proto protoreflect.FileDescriptor
 
 var file_sportiverse_sportiverse_genesis_proto_rawDesc = []byte{
@@ -511,26 +1318,63 @@ var file_sportiverse_sportiverse_genesis_proto_rawDesc = []byte{
 	0x6f, 0x74, 0x6f, 0x1a, 0x14, 0x67, 0x6f, 0x67, 0x6f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67,
 	0x6f, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x24, 0x73, 0x70, 0x6f, 0x72, 0x74,
 	0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2f, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72,
-	0x73, 0x65, 0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22,
-	0x52, 0x0a, 0x0c, 0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12,
-	0x42, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
-	0x1f, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e, 0x73, 0x70,
-	0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73,
-	0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x06, 0x70, 0x61, 0x72,
-	0x61, 0x6d, 0x73, 0x42, 0xd1, 0x01, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x73, 0x70, 0x6f, 0x72,
-	0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65,
-	0x72, 0x73, 0x65, 0x42, 0x0c, 0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x50, 0x72, 0x6f, 0x74,
-	0x6f, 0x50, 0x01, 0x5a, 0x27, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65,
-	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65,
-	0x2f, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0xa2, 0x02, 0x03, 0x53,
-	0x53, 0x58, 0xaa, 0x02, 0x17, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65,
-	0x2e, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0xca, 0x02, 0x17, 0x53,
-	0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x5c, 0x53, 0x70, 0x6f, 0x72, 0x74,
-	0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0xe2, 0x02, 0x23, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76,
-	0x65, 0x72, 0x73, 0x65, 0x5c, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65,
-	0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x18, 0x53,
-	0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x3a, 0x3a, 0x53, 0x70, 0x6f, 0x72,
-	0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x65, 0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
+	0x22, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2f, 0x73, 0x70, 0x6f,
+	0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2f, 0x70, 0x6f, 0x73, 0x74, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x1a, 0x25, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65,
+	0x2f, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2f, 0x63, 0x6f, 0x6d,
+	0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x2a, 0x73, 0x70, 0x6f, 0x72,
+	0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2f, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65,
+	0x72, 0x73, 0x65, 0x2f, 0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x22, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65,
+	0x72, 0x73, 0x65, 0x2f, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2f,
+	0x6c, 0x69, 0x6b, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x85, 0x04, 0x0a, 0x0c, 0x47,
+	0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x42, 0x0a, 0x06, 0x70,
+	0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x70,
+	0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69,
+	0x76, 0x65, 0x72, 0x73, 0x65, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x09, 0xc8, 0xde,
+	0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12,
+	0x3f, 0x0a, 0x08, 0x70, 0x6f, 0x73, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x1d, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e,
+	0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e, 0x50, 0x6f, 0x73, 0x74,
+	0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x08, 0x70, 0x6f, 0x73, 0x74, 0x4c, 0x69, 0x73, 0x74,
+	0x12, 0x1c, 0x0a, 0x09, 0x70, 0x6f, 0x73, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x04, 0x52, 0x09, 0x70, 0x6f, 0x73, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x48,
+	0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x04, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73,
+	0x65, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e, 0x43, 0x6f,
+	0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x0b, 0x63, 0x6f, 0x6d,
+	0x6d, 0x65, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x63, 0x6f, 0x6d, 0x6d,
+	0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0c,
+	0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x57, 0x0a, 0x10,
+	0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74,
+	0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76,
+	0x65, 0x72, 0x73, 0x65, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65,
+	0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x42, 0x04, 0xc8,
+	0xde, 0x1f, 0x00, 0x52, 0x10, 0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f,
+	0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x2c, 0x0a, 0x11, 0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69,
+	0x70, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x04,
+	0x52, 0x11, 0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f,
+	0x75, 0x6e, 0x74, 0x12, 0x3f, 0x0a, 0x08, 0x6c, 0x69, 0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x18,
+	0x08, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65,
+	0x72, 0x73, 0x65, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e,
+	0x4c, 0x69, 0x6b, 0x65, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x08, 0x6c, 0x69, 0x6b, 0x65,
+	0x4c, 0x69, 0x73, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x6c, 0x69, 0x6b, 0x65, 0x43, 0x6f, 0x75, 0x6e,
+	0x74, 0x18, 0x09, 0x20, 0x01, 0x28, 0x04, 0x52, 0x09, 0x6c, 0x69, 0x6b, 0x65, 0x43, 0x6f, 0x75,
+	0x6e, 0x74, 0x42, 0xd1, 0x01, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74,
+	0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72,
+	0x73, 0x65, 0x42, 0x0c, 0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f,
+	0x50, 0x01, 0x5a, 0x27, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2f,
+	0x61, 0x70, 0x69, 0x2f, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2f,
+	0x73, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0xa2, 0x02, 0x03, 0x53, 0x53,
+	0x58, 0xaa, 0x02, 0x17, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x2e,
+	0x53, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0xca, 0x02, 0x17, 0x53, 0x70,
+	0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x5c, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x69,
+	0x76, 0x65, 0x72, 0x73, 0x65, 0xe2, 0x02, 0x23, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65,
+	0x72, 0x73, 0x65, 0x5c, 0x53, 0x70, 0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x5c,
+	0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x18, 0x53, 0x70,
+	0x6f, 0x72, 0x74, 0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x3a, 0x3a, 0x53, 0x70, 0x6f, 0x72, 0x74,
+	0x69, 0x76, 0x65, 0x72, 0x73, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -549,14 +1393,22 @@ var file_sportiverse_sportiverse_genesis_proto_msgTypes = make([]protoimpl.Messa
 var file_sportiverse_sportiverse_genesis_proto_goTypes = []interface{}{
 	(*GenesisState)(nil), // 0: sportiverse.sportiverse.GenesisState
 	(*Params)(nil),       // 1: sportiverse.sportiverse.Params
+	(*Post)(nil),         // 2: sportiverse.sportiverse.Post
+	(*Comment)(nil),      // 3: sportiverse.sportiverse.Comment
+	(*Subscription)(nil), // 4: sportiverse.sportiverse.Subscription
+	(*Like)(nil),         // 5: sportiverse.sportiverse.Like
 }
 var file_sportiverse_sportiverse_genesis_proto_depIdxs = []int32{
 	1, // 0: sportiverse.sportiverse.GenesisState.params:type_name -> sportiverse.sportiverse.Params
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	2, // 1: sportiverse.sportiverse.GenesisState.postList:type_name -> sportiverse.sportiverse.Post
+	3, // 2: sportiverse.sportiverse.GenesisState.commentList:type_name -> sportiverse.sportiverse.Comment
+	4, // 3: sportiverse.sportiverse.GenesisState.subscriptionList:type_name -> sportiverse.sportiverse.Subscription
+	5, // 4: sportiverse.sportiverse.GenesisState.likeList:type_name -> sportiverse.sportiverse.Like
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_sportiverse_sportiverse_genesis_proto_init() }
@@ -565,6 +1417,10 @@ func file_sportiverse_sportiverse_genesis_proto_init() {
 		return
 	}
 	file_sportiverse_sportiverse_params_proto_init()
+	file_sportiverse_sportiverse_post_proto_init()
+	file_sportiverse_sportiverse_comment_proto_init()
+	file_sportiverse_sportiverse_subscription_proto_init()
+	file_sportiverse_sportiverse_like_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_sportiverse_sportiverse_genesis_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GenesisState); i {

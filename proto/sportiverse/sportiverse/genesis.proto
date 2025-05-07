@@ -1,17 +1,29 @@
 syntax = "proto3";
+
 package sportiverse.sportiverse;
 
 import "amino/amino.proto";
 import "gogoproto/gogo.proto";
 import "sportiverse/sportiverse/params.proto";
+import "sportiverse/sportiverse/post.proto";
+import "sportiverse/sportiverse/comment.proto";
+import "sportiverse/sportiverse/subscription.proto";
+import "sportiverse/sportiverse/like.proto";
 
 option go_package = "sportiverse/x/sportiverse/types";
 
 // GenesisState defines the sportiverse module's genesis state.
 message GenesisState {
+  
   // params defines all the parameters of the module.
-  Params params = 1 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty) = true
-  ];
+           Params       params            = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+  repeated Post         postList          = 2 [(gogoproto.nullable) = false] ;
+           uint64       postCount         = 3;
+  repeated Comment      commentList       = 4 [(gogoproto.nullable) = false] ;
+           uint64       commentCount      = 5;
+  repeated Subscription subscriptionList  = 6 [(gogoproto.nullable) = false] ;
+           uint64       subscriptionCount = 7;
+  repeated Like         likeList          = 8 [(gogoproto.nullable) = false] ;
+           uint64       likeCount         = 9;
 }
+

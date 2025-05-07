@@ -8,7 +8,6 @@ package sportiverse
 
 import (
 	context "context"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -20,7 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Query_Params_FullMethodName = "/sportiverse.sportiverse.Query/Params"
+	Query_Params_FullMethodName          = "/sportiverse.sportiverse.Query/Params"
+	Query_Post_FullMethodName            = "/sportiverse.sportiverse.Query/Post"
+	Query_PostAll_FullMethodName         = "/sportiverse.sportiverse.Query/PostAll"
+	Query_Comment_FullMethodName         = "/sportiverse.sportiverse.Query/Comment"
+	Query_CommentAll_FullMethodName      = "/sportiverse.sportiverse.Query/CommentAll"
+	Query_Subscription_FullMethodName    = "/sportiverse.sportiverse.Query/Subscription"
+	Query_SubscriptionAll_FullMethodName = "/sportiverse.sportiverse.Query/SubscriptionAll"
+	Query_Like_FullMethodName            = "/sportiverse.sportiverse.Query/Like"
+	Query_LikeAll_FullMethodName         = "/sportiverse.sportiverse.Query/LikeAll"
 )
 
 // QueryClient is the client API for Query service.
@@ -29,6 +36,18 @@ const (
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// Queries a list of Post items.
+	Post(ctx context.Context, in *QueryGetPostRequest, opts ...grpc.CallOption) (*QueryGetPostResponse, error)
+	PostAll(ctx context.Context, in *QueryAllPostRequest, opts ...grpc.CallOption) (*QueryAllPostResponse, error)
+	// Queries a list of Comment items.
+	Comment(ctx context.Context, in *QueryGetCommentRequest, opts ...grpc.CallOption) (*QueryGetCommentResponse, error)
+	CommentAll(ctx context.Context, in *QueryAllCommentRequest, opts ...grpc.CallOption) (*QueryAllCommentResponse, error)
+	// Queries a list of Subscription items.
+	Subscription(ctx context.Context, in *QueryGetSubscriptionRequest, opts ...grpc.CallOption) (*QueryGetSubscriptionResponse, error)
+	SubscriptionAll(ctx context.Context, in *QueryAllSubscriptionRequest, opts ...grpc.CallOption) (*QueryAllSubscriptionResponse, error)
+	// Queries a list of Like items.
+	Like(ctx context.Context, in *QueryGetLikeRequest, opts ...grpc.CallOption) (*QueryGetLikeResponse, error)
+	LikeAll(ctx context.Context, in *QueryAllLikeRequest, opts ...grpc.CallOption) (*QueryAllLikeResponse, error)
 }
 
 type queryClient struct {
@@ -48,12 +67,96 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) Post(ctx context.Context, in *QueryGetPostRequest, opts ...grpc.CallOption) (*QueryGetPostResponse, error) {
+	out := new(QueryGetPostResponse)
+	err := c.cc.Invoke(ctx, Query_Post_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) PostAll(ctx context.Context, in *QueryAllPostRequest, opts ...grpc.CallOption) (*QueryAllPostResponse, error) {
+	out := new(QueryAllPostResponse)
+	err := c.cc.Invoke(ctx, Query_PostAll_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) Comment(ctx context.Context, in *QueryGetCommentRequest, opts ...grpc.CallOption) (*QueryGetCommentResponse, error) {
+	out := new(QueryGetCommentResponse)
+	err := c.cc.Invoke(ctx, Query_Comment_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) CommentAll(ctx context.Context, in *QueryAllCommentRequest, opts ...grpc.CallOption) (*QueryAllCommentResponse, error) {
+	out := new(QueryAllCommentResponse)
+	err := c.cc.Invoke(ctx, Query_CommentAll_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) Subscription(ctx context.Context, in *QueryGetSubscriptionRequest, opts ...grpc.CallOption) (*QueryGetSubscriptionResponse, error) {
+	out := new(QueryGetSubscriptionResponse)
+	err := c.cc.Invoke(ctx, Query_Subscription_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) SubscriptionAll(ctx context.Context, in *QueryAllSubscriptionRequest, opts ...grpc.CallOption) (*QueryAllSubscriptionResponse, error) {
+	out := new(QueryAllSubscriptionResponse)
+	err := c.cc.Invoke(ctx, Query_SubscriptionAll_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) Like(ctx context.Context, in *QueryGetLikeRequest, opts ...grpc.CallOption) (*QueryGetLikeResponse, error) {
+	out := new(QueryGetLikeResponse)
+	err := c.cc.Invoke(ctx, Query_Like_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) LikeAll(ctx context.Context, in *QueryAllLikeRequest, opts ...grpc.CallOption) (*QueryAllLikeResponse, error) {
+	out := new(QueryAllLikeResponse)
+	err := c.cc.Invoke(ctx, Query_LikeAll_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// Queries a list of Post items.
+	Post(context.Context, *QueryGetPostRequest) (*QueryGetPostResponse, error)
+	PostAll(context.Context, *QueryAllPostRequest) (*QueryAllPostResponse, error)
+	// Queries a list of Comment items.
+	Comment(context.Context, *QueryGetCommentRequest) (*QueryGetCommentResponse, error)
+	CommentAll(context.Context, *QueryAllCommentRequest) (*QueryAllCommentResponse, error)
+	// Queries a list of Subscription items.
+	Subscription(context.Context, *QueryGetSubscriptionRequest) (*QueryGetSubscriptionResponse, error)
+	SubscriptionAll(context.Context, *QueryAllSubscriptionRequest) (*QueryAllSubscriptionResponse, error)
+	// Queries a list of Like items.
+	Like(context.Context, *QueryGetLikeRequest) (*QueryGetLikeResponse, error)
+	LikeAll(context.Context, *QueryAllLikeRequest) (*QueryAllLikeResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -63,6 +166,30 @@ type UnimplementedQueryServer struct {
 
 func (UnimplementedQueryServer) Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (UnimplementedQueryServer) Post(context.Context, *QueryGetPostRequest) (*QueryGetPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Post not implemented")
+}
+func (UnimplementedQueryServer) PostAll(context.Context, *QueryAllPostRequest) (*QueryAllPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PostAll not implemented")
+}
+func (UnimplementedQueryServer) Comment(context.Context, *QueryGetCommentRequest) (*QueryGetCommentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Comment not implemented")
+}
+func (UnimplementedQueryServer) CommentAll(context.Context, *QueryAllCommentRequest) (*QueryAllCommentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CommentAll not implemented")
+}
+func (UnimplementedQueryServer) Subscription(context.Context, *QueryGetSubscriptionRequest) (*QueryGetSubscriptionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Subscription not implemented")
+}
+func (UnimplementedQueryServer) SubscriptionAll(context.Context, *QueryAllSubscriptionRequest) (*QueryAllSubscriptionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubscriptionAll not implemented")
+}
+func (UnimplementedQueryServer) Like(context.Context, *QueryGetLikeRequest) (*QueryGetLikeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Like not implemented")
+}
+func (UnimplementedQueryServer) LikeAll(context.Context, *QueryAllLikeRequest) (*QueryAllLikeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LikeAll not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -95,6 +222,150 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Post_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Post(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_Post_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Post(ctx, req.(*QueryGetPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_PostAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).PostAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_PostAll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).PostAll(ctx, req.(*QueryAllPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_Comment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetCommentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Comment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_Comment_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Comment(ctx, req.(*QueryGetCommentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_CommentAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllCommentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).CommentAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_CommentAll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).CommentAll(ctx, req.(*QueryAllCommentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_Subscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetSubscriptionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Subscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_Subscription_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Subscription(ctx, req.(*QueryGetSubscriptionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_SubscriptionAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllSubscriptionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).SubscriptionAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_SubscriptionAll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).SubscriptionAll(ctx, req.(*QueryAllSubscriptionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_Like_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetLikeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Like(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_Like_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Like(ctx, req.(*QueryGetLikeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_LikeAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllLikeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).LikeAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_LikeAll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).LikeAll(ctx, req.(*QueryAllLikeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -105,6 +376,38 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "Post",
+			Handler:    _Query_Post_Handler,
+		},
+		{
+			MethodName: "PostAll",
+			Handler:    _Query_PostAll_Handler,
+		},
+		{
+			MethodName: "Comment",
+			Handler:    _Query_Comment_Handler,
+		},
+		{
+			MethodName: "CommentAll",
+			Handler:    _Query_CommentAll_Handler,
+		},
+		{
+			MethodName: "Subscription",
+			Handler:    _Query_Subscription_Handler,
+		},
+		{
+			MethodName: "SubscriptionAll",
+			Handler:    _Query_SubscriptionAll_Handler,
+		},
+		{
+			MethodName: "Like",
+			Handler:    _Query_Like_Handler,
+		},
+		{
+			MethodName: "LikeAll",
+			Handler:    _Query_LikeAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
