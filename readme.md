@@ -1,5 +1,5 @@
 
-# 🌐 Sportiverse Blockchain
+# 🌐 Sportiverse Testnet
 
 **Sportiverse** is a blockchain designed for sports-focused applications, built using the Cosmos SDK and Tendermint.
   
