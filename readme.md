@@ -14,7 +14,7 @@ This network operates autonomously, without administrators, enabling decentraliz
 -  **Governance:** Fully autonomous, no admins.
 
 ## 📄 Litepaper
-For a deep dive into Sportiverse's architecture and vision, read our [Litepaper](https://sportiverse.network/docs).
+For a deep dive into Sportiverse's architecture and vision, read our [Litepaper](https://sportiverse.network).
 
 ---
 
