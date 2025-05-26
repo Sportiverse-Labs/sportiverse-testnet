@@ -30,6 +30,8 @@ const (
 	Msg_DeleteSubscription_FullMethodName = "/sportiverse.sportiverse.Msg/DeleteSubscription"
 	Msg_CreateLike_FullMethodName         = "/sportiverse.sportiverse.Msg/CreateLike"
 	Msg_DeleteLike_FullMethodName         = "/sportiverse.sportiverse.Msg/DeleteLike"
+	Msg_CreateAccount_FullMethodName      = "/sportiverse.sportiverse.Msg/CreateAccount"
+	Msg_DeleteAccount_FullMethodName      = "/sportiverse.sportiverse.Msg/DeleteAccount"
 )
 
 // MsgClient is the client API for Msg service.
@@ -49,6 +51,8 @@ type MsgClient interface {
 	DeleteSubscription(ctx context.Context, in *MsgDeleteSubscription, opts ...grpc.CallOption) (*MsgDeleteSubscriptionResponse, error)
 	CreateLike(ctx context.Context, in *MsgCreateLike, opts ...grpc.CallOption) (*MsgCreateLikeResponse, error)
 	DeleteLike(ctx context.Context, in *MsgDeleteLike, opts ...grpc.CallOption) (*MsgDeleteLikeResponse, error)
+	CreateAccount(ctx context.Context, in *MsgCreateAccount, opts ...grpc.CallOption) (*MsgCreateAccountResponse, error)
+	DeleteAccount(ctx context.Context, in *MsgDeleteAccount, opts ...grpc.CallOption) (*MsgDeleteAccountResponse, error)
 }
 
 type msgClient struct {
@@ -158,6 +162,24 @@ func (c *msgClient) DeleteLike(ctx context.Context, in *MsgDeleteLike, opts ...g
 	return out, nil
 }
 
+func (c *msgClient) CreateAccount(ctx context.Context, in *MsgCreateAccount, opts ...grpc.CallOption) (*MsgCreateAccountResponse, error) {
+	out := new(MsgCreateAccountResponse)
+	err := c.cc.Invoke(ctx, Msg_CreateAccount_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteAccount(ctx context.Context, in *MsgDeleteAccount, opts ...grpc.CallOption) (*MsgDeleteAccountResponse, error) {
+	out := new(MsgDeleteAccountResponse)
+	err := c.cc.Invoke(ctx, Msg_DeleteAccount_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 // All implementations must embed UnimplementedMsgServer
 // for forward compatibility
@@ -175,6 +197,8 @@ type MsgServer interface {
 	DeleteSubscription(context.Context, *MsgDeleteSubscription) (*MsgDeleteSubscriptionResponse, error)
 	CreateLike(context.Context, *MsgCreateLike) (*MsgCreateLikeResponse, error)
 	DeleteLike(context.Context, *MsgDeleteLike) (*MsgDeleteLikeResponse, error)
+	CreateAccount(context.Context, *MsgCreateAccount) (*MsgCreateAccountResponse, error)
+	DeleteAccount(context.Context, *MsgDeleteAccount) (*MsgDeleteAccountResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -214,6 +238,12 @@ func (UnimplementedMsgServer) CreateLike(context.Context, *MsgCreateLike) (*MsgC
 }
 func (UnimplementedMsgServer) DeleteLike(context.Context, *MsgDeleteLike) (*MsgDeleteLikeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteLike not implemented")
+}
+func (UnimplementedMsgServer) CreateAccount(context.Context, *MsgCreateAccount) (*MsgCreateAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAccount not implemented")
+}
+func (UnimplementedMsgServer) DeleteAccount(context.Context, *MsgDeleteAccount) (*MsgDeleteAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAccount not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -426,6 +456,42 @@ func _Msg_DeleteLike_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CreateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateAccount)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_CreateAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateAccount(ctx, req.(*MsgCreateAccount))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteAccount)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_DeleteAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteAccount(ctx, req.(*MsgDeleteAccount))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Msg_ServiceDesc is the grpc.ServiceDesc for Msg service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -476,6 +542,14 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteLike",
 			Handler:    _Msg_DeleteLike_Handler,
+		},
+		{
+			MethodName: "CreateAccount",
+			Handler:    _Msg_CreateAccount_Handler,
+		},
+		{
+			MethodName: "DeleteAccount",
+			Handler:    _Msg_DeleteAccount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

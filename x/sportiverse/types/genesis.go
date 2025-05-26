@@ -14,6 +14,7 @@ func DefaultGenesis() *GenesisState {
 		CommentList:      []Comment{},
 		SubscriptionList: []Subscription{},
 		LikeList:         []Like{},
+		AccountList:      []Account{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -69,6 +70,18 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("like id should be lower or equal than the last id")
 		}
 		likeIdMap[elem.Id] = true
+	}
+	// Check for duplicated ID in account
+	accountIdMap := make(map[uint64]bool)
+	accountCount := gs.GetAccountCount()
+	for _, elem := range gs.AccountList {
+		if _, ok := accountIdMap[elem.Id]; ok {
+			return fmt.Errorf("duplicated id for account")
+		}
+		if elem.Id >= accountCount {
+			return fmt.Errorf("account id should be lower or equal than the last id")
+		}
+		accountIdMap[elem.Id] = true
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

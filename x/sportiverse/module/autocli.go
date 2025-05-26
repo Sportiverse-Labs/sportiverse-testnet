@@ -61,6 +61,17 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Short:          "Shows a like by id",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "id"}},
 				},
+				{
+					RpcMethod: "AccountAll",
+					Use:       "list-account",
+					Short:     "List all account",
+				},
+				{
+					RpcMethod:      "Account",
+					Use:            "show-account [id]",
+					Short:          "Shows a account by id",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "id"}},
+				},
 				// this line is used by ignite scaffolding # autocli/query
 			},
 		},
@@ -130,6 +141,18 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					RpcMethod:      "DeleteLike",
 					Use:            "delete-like [id]",
 					Short:          "Delete like",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "id"}},
+				},
+				{
+					RpcMethod:      "CreateAccount",
+					Use:            "create-account [hashAccount]",
+					Short:          "Create account",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "hashAccount"}},
+				},
+				{
+					RpcMethod:      "DeleteAccount",
+					Use:            "delete-account [id]",
+					Short:          "Delete account",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "id"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx

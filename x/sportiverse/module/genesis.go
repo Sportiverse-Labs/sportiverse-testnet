@@ -37,6 +37,13 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 
 	// Set like count
 	k.SetLikeCount(ctx, genState.LikeCount)
+	// Set all the account
+	for _, elem := range genState.AccountList {
+		k.SetAccount(ctx, elem)
+	}
+
+	// Set account count
+	k.SetAccountCount(ctx, genState.AccountCount)
 	// this line is used by starport scaffolding # genesis/module/init
 	if err := k.SetParams(ctx, genState.Params); err != nil {
 		panic(err)
@@ -56,6 +63,8 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis.SubscriptionCount = k.GetSubscriptionCount(ctx)
 	genesis.LikeList = k.GetAllLike(ctx)
 	genesis.LikeCount = k.GetLikeCount(ctx)
+	genesis.AccountList = k.GetAllAccount(ctx)
+	genesis.AccountCount = k.GetAccountCount(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis

@@ -38,3 +38,8 @@ const (
 	LikeKey      = "Like/value/"
 	LikeCountKey = "Like/count/"
 )
+
+const (
+	AccountKey      = "Account/value/"
+	AccountCountKey = "Account/count/"
+)

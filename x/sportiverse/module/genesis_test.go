@@ -51,6 +51,15 @@ func TestGenesis(t *testing.T) {
 			},
 		},
 		LikeCount: 2,
+		AccountList: []types.Account{
+			{
+				Id: 0,
+			},
+			{
+				Id: 1,
+			},
+		},
+		AccountCount: 2,
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -70,5 +79,7 @@ func TestGenesis(t *testing.T) {
 	require.Equal(t, genesisState.SubscriptionCount, got.SubscriptionCount)
 	require.ElementsMatch(t, genesisState.LikeList, got.LikeList)
 	require.Equal(t, genesisState.LikeCount, got.LikeCount)
+	require.ElementsMatch(t, genesisState.AccountList, got.AccountList)
+	require.Equal(t, genesisState.AccountCount, got.AccountCount)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

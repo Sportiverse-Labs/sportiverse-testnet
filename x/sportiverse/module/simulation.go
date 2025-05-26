@@ -63,6 +63,14 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgDeleteLike int = 100
 
+	opWeightMsgCreateAccount = "op_weight_msg_account"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreateAccount int = 100
+
+	opWeightMsgDeleteAccount = "op_weight_msg_account"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteAccount int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -118,6 +126,17 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 			},
 		},
 		LikeCount: 2,
+		AccountList: []types.Account{
+			{
+				Id:      0,
+				Creator: sample.AccAddress(),
+			},
+			{
+				Id:      1,
+				Creator: sample.AccAddress(),
+			},
+		},
+		AccountCount: 2,
 		// this line is used by starport scaffolding # simapp/module/genesisState
 	}
 	simState.GenState[types.ModuleName] = simState.Cdc.MustMarshalJSON(&sportiverseGenesis)
@@ -240,6 +259,28 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		sportiversesimulation.SimulateMsgDeleteLike(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
+	var weightMsgCreateAccount int
+	simState.AppParams.GetOrGenerate(opWeightMsgCreateAccount, &weightMsgCreateAccount, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreateAccount = defaultWeightMsgCreateAccount
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreateAccount,
+		sportiversesimulation.SimulateMsgCreateAccount(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeleteAccount int
+	simState.AppParams.GetOrGenerate(opWeightMsgDeleteAccount, &weightMsgDeleteAccount, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteAccount = defaultWeightMsgDeleteAccount
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteAccount,
+		sportiversesimulation.SimulateMsgDeleteAccount(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -325,6 +366,22 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			defaultWeightMsgDeleteLike,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
 				sportiversesimulation.SimulateMsgDeleteLike(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgCreateAccount,
+			defaultWeightMsgCreateAccount,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgCreateAccount(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgDeleteAccount,
+			defaultWeightMsgDeleteAccount,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				sportiversesimulation.SimulateMsgDeleteAccount(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),

@@ -28,6 +28,8 @@ const (
 	Query_SubscriptionAll_FullMethodName = "/sportiverse.sportiverse.Query/SubscriptionAll"
 	Query_Like_FullMethodName            = "/sportiverse.sportiverse.Query/Like"
 	Query_LikeAll_FullMethodName         = "/sportiverse.sportiverse.Query/LikeAll"
+	Query_Account_FullMethodName         = "/sportiverse.sportiverse.Query/Account"
+	Query_AccountAll_FullMethodName      = "/sportiverse.sportiverse.Query/AccountAll"
 )
 
 // QueryClient is the client API for Query service.
@@ -48,6 +50,9 @@ type QueryClient interface {
 	// Queries a list of Like items.
 	Like(ctx context.Context, in *QueryGetLikeRequest, opts ...grpc.CallOption) (*QueryGetLikeResponse, error)
 	LikeAll(ctx context.Context, in *QueryAllLikeRequest, opts ...grpc.CallOption) (*QueryAllLikeResponse, error)
+	// Queries a list of Account items.
+	Account(ctx context.Context, in *QueryGetAccountRequest, opts ...grpc.CallOption) (*QueryGetAccountResponse, error)
+	AccountAll(ctx context.Context, in *QueryAllAccountRequest, opts ...grpc.CallOption) (*QueryAllAccountResponse, error)
 }
 
 type queryClient struct {
@@ -139,6 +144,24 @@ func (c *queryClient) LikeAll(ctx context.Context, in *QueryAllLikeRequest, opts
 	return out, nil
 }
 
+func (c *queryClient) Account(ctx context.Context, in *QueryGetAccountRequest, opts ...grpc.CallOption) (*QueryGetAccountResponse, error) {
+	out := new(QueryGetAccountResponse)
+	err := c.cc.Invoke(ctx, Query_Account_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) AccountAll(ctx context.Context, in *QueryAllAccountRequest, opts ...grpc.CallOption) (*QueryAllAccountResponse, error) {
+	out := new(QueryAllAccountResponse)
+	err := c.cc.Invoke(ctx, Query_AccountAll_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility
@@ -157,6 +180,9 @@ type QueryServer interface {
 	// Queries a list of Like items.
 	Like(context.Context, *QueryGetLikeRequest) (*QueryGetLikeResponse, error)
 	LikeAll(context.Context, *QueryAllLikeRequest) (*QueryAllLikeResponse, error)
+	// Queries a list of Account items.
+	Account(context.Context, *QueryGetAccountRequest) (*QueryGetAccountResponse, error)
+	AccountAll(context.Context, *QueryAllAccountRequest) (*QueryAllAccountResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -190,6 +216,12 @@ func (UnimplementedQueryServer) Like(context.Context, *QueryGetLikeRequest) (*Qu
 }
 func (UnimplementedQueryServer) LikeAll(context.Context, *QueryAllLikeRequest) (*QueryAllLikeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LikeAll not implemented")
+}
+func (UnimplementedQueryServer) Account(context.Context, *QueryGetAccountRequest) (*QueryGetAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Account not implemented")
+}
+func (UnimplementedQueryServer) AccountAll(context.Context, *QueryAllAccountRequest) (*QueryAllAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountAll not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -366,6 +398,42 @@ func _Query_LikeAll_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Account_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Account(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_Account_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Account(ctx, req.(*QueryGetAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_AccountAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).AccountAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_AccountAll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).AccountAll(ctx, req.(*QueryAllAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -408,6 +476,14 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LikeAll",
 			Handler:    _Query_LikeAll_Handler,
+		},
+		{
+			MethodName: "Account",
+			Handler:    _Query_Account_Handler,
+		},
+		{
+			MethodName: "AccountAll",
+			Handler:    _Query_AccountAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

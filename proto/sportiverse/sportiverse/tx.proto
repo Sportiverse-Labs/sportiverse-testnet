@@ -11,6 +11,7 @@ import "sportiverse/sportiverse/post.proto";
 import "sportiverse/sportiverse/comment.proto";
 import "sportiverse/sportiverse/subscription.proto";
 import "sportiverse/sportiverse/like.proto";
+import "sportiverse/sportiverse/account.proto";
 
 option go_package = "sportiverse/x/sportiverse/types";
 
@@ -31,6 +32,8 @@ service Msg {
   rpc DeleteSubscription (MsgDeleteSubscription) returns (MsgDeleteSubscriptionResponse);
   rpc CreateLike         (MsgCreateLike        ) returns (MsgCreateLikeResponse        );
   rpc DeleteLike         (MsgDeleteLike        ) returns (MsgDeleteLikeResponse        );
+  rpc CreateAccount      (MsgCreateAccount     ) returns (MsgCreateAccountResponse     );
+  rpc DeleteAccount      (MsgDeleteAccount     ) returns (MsgDeleteAccountResponse     );
 }
 // MsgUpdateParams is the Msg/UpdateParams request type.
 message MsgUpdateParams {
@@ -147,4 +150,23 @@ message MsgDeleteLike {
 }
 
 message MsgDeleteLikeResponse {}
+
+message MsgCreateAccount {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator     = 1;
+  string hashAccount = 2;
+}
+
+message MsgCreateAccountResponse {
+  uint64 id = 1;
+}
+
+
+message MsgDeleteAccount {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1;
+  uint64 id      = 2;
+}
+
+message MsgDeleteAccountResponse {}
 
